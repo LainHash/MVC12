@@ -20,8 +20,6 @@
   <ItemGroup>
     <Folder Include="DTOs\Accounts\Create\" />
     <Folder Include="DTOs\Accounts\Update\" />
-    <Folder Include="DTOs\Products\Create\" />
-    <Folder Include="DTOs\Products\Update\" />
     <Folder Include="Helpers\Utils\" />
   </ItemGroup>
 

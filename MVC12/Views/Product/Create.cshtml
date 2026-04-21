@@ -1,0 +1,200 @@
+﻿@model MVC12.DTOs.Products.Create.CreateProductDTO
+
+@{
+    ViewData["Title"] = "Thêm sản phẩm mới";
+}
+
+<!-- Product Create Section -->
+<div class="container-fluid product-form-section py-5">
+    <div class="container">
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="d-flex align-items-center mb-4">
+                    <a asp-action="Index" class="btn btn-outline-secondary btn-sm rounded-circle me-3">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <div>
+                        <h1 class="display-5 mb-2">
+                            <i class="fas fa-plus-circle text-success me-3"></i>Thêm sản phẩm mới
+                        </h1>
+                        <p class="text-secondary">Nhập thông tin chi tiết sản phẩm để thêm vào danh sách</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Form Card -->
+            <div class="col-lg-8 mx-auto">
+                <div class="form-card">
+                    <!-- Category Selection -->
+                    <form method="get" asp-action="Create" class="category-selector-form mb-5">
+                        <div class="form-group">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-folder-open me-2 text-primary"></i>Chọn loại sản phẩm
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select form-select-lg category-selector"
+                                    asp-for="CategoryId"
+                                    asp-items="ViewBag.CategoryId"
+                                    aria-label="Chọn loại sản phẩm">
+                                <option value="0">-- Chọn loại sản phẩm --</option>
+                            </select>
+                            <small class="text-muted d-block mt-2">
+                                <i class="fas fa-info-circle me-1"></i>Thay đổi loại để cập nhật thông số kỹ thuật
+                            </small>
+                        </div>
+                    </form>
+
+                    <hr class="my-4">
+
+                    <!-- Main Form -->
+                    <form asp-action="Create" method="post" class="product-form" novalidate>
+                        <input type="hidden" asp-for="CategoryId" />
+
+                        <!-- Basic Info Row -->
+                        <div class="form-section mb-5">
+                            <h5 class="form-section-title mb-4">
+                                <i class="fas fa-info-circle me-2"></i>Thông tin cơ bản
+                            </h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">
+                                            Tên sản phẩm <span class="text-danger">*</span>
+                                        </label>
+                                        <input asp-for="ProductName"
+                                               class="form-control form-control-lg"
+                                               placeholder="Nhập tên sản phẩm..."
+                                               required />
+                                        <span asp-validation-for="ProductName" class="text-danger small d-block mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">
+                                            URL hình ảnh <span class="text-danger">*</span>
+                                        </label>
+                                        <input asp-for="ImageUrl"
+                                               class="form-control form-control-lg"
+                                               placeholder="https://..."
+                                               type="url" />
+                                        <span asp-validation-for="ImageUrl" class="text-danger small d-block mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">
+                                            Mô tả sản phẩm
+                                        </label>
+                                        <textarea asp-for="Description"
+                                                  class="form-control"
+                                                  rows="4"
+                                                  placeholder="Nhập mô tả chi tiết sản phẩm..."></textarea>
+                                        <span asp-validation-for="Description" class="text-danger small d-block mt-2"></span>
+                                        <small class="text-muted d-block mt-2">
+                                            <i class="fas fa-character-count me-1"></i>Hãy mô tả chi tiết đặc điểm nổi bật
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing & Stock Row -->
+                        <div class="form-section mb-5">
+                            <h5 class="form-section-title mb-4">
+                                <i class="fas fa-tag me-2"></i>Giá và kho hàng
+                            </h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">
+                                            Nhà cung cấp <span class="text-danger">*</span>
+                                        </label>
+                                        <select asp-for="SupplierId"
+                                                asp-items="ViewBag.SupplierId"
+                                                class="form-select form-select-lg"
+                                                required>
+                                            <option value="">-- Chọn nhà cung cấp --</option>
+                                        </select>
+                                        <span asp-validation-for="SupplierId" class="text-danger small d-block mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">
+                                            Giá bán (đ) <span class="text-danger">*</span>
+                                        </label>
+                                        <input asp-for="UnitPrice"
+                                               class="form-control form-control-lg"
+                                               type="number"
+                                               min="0"
+                                               placeholder="0"
+                                               required />
+                                        <span asp-validation-for="UnitPrice" class="text-danger small d-block mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">
+                                            Số lượng kho <span class="text-danger">*</span>
+                                        </label>
+                                        <input asp-for="UnitsInStock"
+                                               class="form-control form-control-lg"
+                                               type="number"
+                                               min="0"
+                                               placeholder="0"
+                                               required />
+                                        <span asp-validation-for="UnitsInStock" class="text-danger small d-block mt-2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Specifications Section -->
+                        @if (ViewBag.SelectedCategory != null)
+                        {
+                            <div class="form-section mb-5">
+                                <h5 class="form-section-title mb-4">
+                                    <i class="fas fa-cogs me-2"></i>Thông số kỹ thuật
+                                </h5>
+                                <div class="specifications-container">
+                                    @await Component.InvokeAsync("CreateProductSpec", new { dto = Model, categoryId = Model.CategoryId })
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Form Actions -->
+                        <div class="form-actions mt-6 pt-4 border-top">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <a asp-action="Index" class="btn btn-outline-secondary btn-lg w-100 rounded-pill">
+                                        <i class="fas fa-times me-2"></i>Hủy
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill form-submit-btn">
+                                        <i class="fas fa-check me-2"></i>Thêm sản phẩm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

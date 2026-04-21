@@ -1,0 +1,82 @@
+﻿@model MVC12.DTOs.Products.Create.CreateProductDTO
+
+<div class="row g-3">
+    @switch (Model.CategoryId)
+    {
+        case 1:
+            <div class="col-md-6">
+                <input asp-for="Laptop.LaptopType" placeholder="Laptop Type" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <input asp-for="Laptop.Os" placeholder="OS" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+                <input asp-for="Laptop.ScreenResolution" placeholder="Resolution" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input asp-for="Laptop.Length" placeholder="Size" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input asp-for="Laptop.Weight" placeholder="Weight" class="form-control" />
+            </div>
+
+            <div class="col-md-3">
+                <select asp-for="Laptop.CpuId" class="form-control" asp-items="ViewBag.Cpus">
+                    <option value="">-- Select CPU --</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select asp-for="Laptop.GpuId" class="form-control" asp-items="ViewBag.Gpus">
+                    <option value="">-- Select GPU --</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select asp-for="Laptop.RamId" class="form-control" asp-items="ViewBag.Rams">
+                    <option value="">-- Select RAM --</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select asp-for="Laptop.StorageId" class="form-control" asp-items="ViewBag.Storages">
+                    <option value="">-- Select Storage --</option>
+                </select>
+            </div>
+            break;
+        case 2:
+            <div class="col-md-4"><input asp-for="Cpu.Cores" placeholder="Cores" class="form-control" /></div>
+            <div class="col-md-4"><input asp-for="Cpu.Logicals" placeholder="Threads" class="form-control" /></div>
+            <div class="col-md-4"><input asp-for="Cpu.Tdp" placeholder="TDP" class="form-control" /></div>
+            <div class="col-md-6"><input asp-for="Cpu.Socket" placeholder="Socket" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Cpu.Speed" placeholder="Base Clock" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Cpu.Turbo" placeholder="Turbo Clock" class="form-control" /></div>
+            break;
+        case 3:
+            <div class="col-md-4"><input asp-for="Gpu.MemorySize" placeholder="Memory" class="form-control" /></div>
+            <div class="col-md-4"><input asp-for="Gpu.MemoryType" placeholder="Type" class="form-control" /></div>
+            <div class="col-md-4"><input asp-for="Gpu.Clock" placeholder="Clock" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Gpu.UnifiedShader" placeholder="Shader" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Gpu.Tmu" placeholder="TMU" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Gpu.Rop" placeholder="ROP" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Gpu.Bus" placeholder="Bus" class="form-control" /></div>
+            <div class="col-md-6"><input asp-for="Gpu.Igpu" placeholder="iGPU" class="form-control" /></div>
+            break;
+        case 4:
+            <div class="col-md-3"><input asp-for="Ram.Capacity" placeholder="Capacity" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Ram.Gen" placeholder="DDR Gen" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Ram.Speed" placeholder="Speed" class="form-control" /></div>
+            <div class="col-md-3"><input asp-for="Ram.Kit" placeholder="Kit" class="form-control" /></div>
+            break;
+        case 5:
+            <div class="col-md-4"><input asp-for="Storage.Capacity" placeholder="Capacity" class="form-control" /></div>
+            <div class="col-md-4"><input asp-for="Storage.MemoryType" placeholder="Type" class="form-control" /></div>
+            <div class="col-md-4"><input asp-for="Storage.InterfaceType" placeholder="Interface" class="form-control" /></div>
+            <div class="col-md-6"><input asp-for="Storage.ReadSpeed" placeholder="Read Speed" class="form-control" /></div>
+            <div class="col-md-6"><input asp-for="Storage.WriteSpeed" placeholder="Write Speed" class="form-control" /></div>
+            break;
+    }
+
+    
+</div>
