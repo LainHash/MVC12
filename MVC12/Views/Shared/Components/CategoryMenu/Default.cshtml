@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MVC12.ViewModels.CategoryMenuVM>
+
+<ul class="dropdown-menu">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a class="dropdown-item d-flex justify-content-between align-items-center"
+                   asp-controller="Product"
+                   asp-action="Index"
+                   asp-route-categoryId="@item.Id">
+
+                <span>@item.Name</span>
+                <span class="badge bg-primary rounded-pill">@item.Count</span>
+            </a>
+        </li>
+    }
+</ul>

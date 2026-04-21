@@ -1,0 +1,23 @@
+.category-dropdown {
+    position: relative;
+}
+
+.category-dropdown-toggle::after {
+    display: none;
+}
+
+.category-dropdown .dropdown-menu {
+    display: none;
+    margin-top: 0;
+    border-radius: 0.25rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    position: absolute;
+}
+
+.category-dropdown.show .dropdown-menu {
+    display: block;
+}
+
+.category-dropdown .dropdown-item:hover {
+    background-color: #f8f9fa;
+}

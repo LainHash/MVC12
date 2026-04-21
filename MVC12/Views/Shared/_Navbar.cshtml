@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@{
+    var username = Context.Session.GetString("Username");
+}
+
+<!-- Navbar & Hero Start -->
+<div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>
+                <!-- <img src="~/img/logo.png" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                    <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="About">Giới thiệu</a>
+                    @await Component.InvokeAsync("CategoryMenu", new { state = "hover" })
+                    @* @if (username != null)
+                    {
+                        <a class="nav-item nav-link" asp-area="" asp-controller="Cart" asp-action="Index">Giỏ hàng</a>
+                    } *@
+                    <a href="team.html" class="nav-item nav-link">Team</a>
+                    <a href="blog.html" class="nav-item nav-link">Blog</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                @* @if (username != null)
+                {
+                    <a class="btn text-danger rounded-pill py-2 px-4" asp-area="" asp-controller="Account" asp-action="Profile">Xin chào, @username</a>
+                    <a class="btn btn-primary rounded-pill py-2 px-4" asp-area="" asp-controller="Account" asp-action="Logout">Đăng xuất</a>
+                }
+                else
+                {
+                    <a class="btn btn-primary rounded-pill py-2 px-4" asp-area="" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                } *@
+                
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar & Hero End -->
